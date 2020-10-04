@@ -10,6 +10,7 @@ import ru.netology.domain.Poster;
 import ru.netology.repository.PosterRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -65,9 +66,10 @@ public class PosterManagerAddNewFilmTest {
         repository.findById(idToSearch);
         System.out.println(repository.findById(1));
 
-        Poster[] actual = new Poster[] {first};
-        Poster expected = repository.findById(idToSearch);
-//        assertArrayEquals(expected,actual);
+//        Poster[] actual = new Poster[] {first};
+        Poster actual = repository.findById(2);
+        Poster expected = repository.findById(1);
+        assertEquals(expected,actual);
 
 
 
