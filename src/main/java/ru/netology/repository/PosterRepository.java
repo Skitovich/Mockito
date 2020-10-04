@@ -31,16 +31,12 @@ public class PosterRepository {
         films = tmp;
     }
 
-    public Poster[] findById(int id) {
-        Poster[] tmp = new Poster[1];
+    public Poster findById(int id) {
         for (Poster film : films) {
             if (film.getId() == id) {
-                tmp[0] = film;
+                return film;
             }
-
         }
-        films = tmp;
-        return films;
+        return null;
     }
-
 }
