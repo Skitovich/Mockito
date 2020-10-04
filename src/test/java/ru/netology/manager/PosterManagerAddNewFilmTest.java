@@ -68,19 +68,29 @@ public class PosterManagerAddNewFilmTest {
 
     @Test
     void testRemoveAll() {
-        Poster[] returned = new Poster[]{};
+        Poster[] returned = new Poster[]{first,second};
         doReturn(returned).when(repository).findAll();
         doCallRealMethod().when(repository).removeAll();
         repository.removeAll();
-//        System.out.println(second);
-//        repository.removeAll();
-//        System.out.println(second);
         manager.getAll();
-//        System.out.println(second);
 
-        Poster[] actual = new Poster[]{first};
-        Poster[] expected = new Poster[]{second};
-        assertArrayEquals(expected,actual);
+
+        Poster actual = first;
+        Poster expected = second;
+        assertEquals(expected,actual);
     }
+    @Test
+    void save() {
+    }
+
+    @Test
+    void findAll() {
+    }
+
+    @Test
+    void removeById() {
+    }
+
+
 }
 
