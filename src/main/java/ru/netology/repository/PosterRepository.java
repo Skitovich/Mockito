@@ -39,4 +39,10 @@ public class PosterRepository {
         }
         return null;
     }
+    public void removeAll(){
+        Poster[] tmp = new Poster[0];
+        System.arraycopy(films,0,tmp,0,films.length);
+        films = tmp;
+        System.gc();
+    }
 }

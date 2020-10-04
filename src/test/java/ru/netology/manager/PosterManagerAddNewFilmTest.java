@@ -18,10 +18,9 @@ public class PosterManagerAddNewFilmTest {
     @Mock
     private PosterRepository repository;
     @InjectMocks
-
     private PosterManager manager;
-    private Poster first = new Poster(1, "Ruslan", "Skitovich", "Horror");
-    private Poster second = new Poster(2, "Titanik", "Leo", "Drama");
+    private Poster first = new Poster(1,"Interstellar", "UFO", "Fantastic");
+    private Poster second = new Poster(2,"Interstellar", "UFO", "Fantastic");
     private Poster third = new Poster(3, "Interstellar", "UFO", "Fantastic");
     private Poster forth = new Poster(4, "Interstellar", "UFO", "Fantastic");
     private Poster five = new Poster(5, "Interstellar", "UFO", "Fantastic");
@@ -61,17 +60,15 @@ public class PosterManagerAddNewFilmTest {
     }
     @Test
     void findById() {
-        manager.add(first);
-        int idToSearch = 1;
-        repository.findById(idToSearch);
-        System.out.println(repository.findById(1));
+        int idOne = 1;
+        int idTwo = 2;
+        System.out.println(repository.findById(idOne));
+        System.out.println(repository.findById(idTwo));
 
-//        Poster[] actual = new Poster[] {first};
-        Poster actual = repository.findById(2);
-        Poster expected = repository.findById(1);
+
+        Poster actual = repository.findById(idOne);
+        Poster expected = repository.findById(idTwo);
         assertEquals(expected,actual);
-
-
 
     }
 }
