@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
-//@Data
+@Data
 public class Poster {
   private int id;
   private String name;
