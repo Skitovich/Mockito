@@ -11,6 +11,7 @@ import ru.netology.repository.PosterRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -30,10 +31,6 @@ public class PosterManagerAddNewFilmTest {
     private Poster nine = new Poster(9, "Interstellar", "UFO", "Fantastic");
     private Poster ten = new Poster(10, "Interstellar", "UFO", "Fantastic");
     private Poster eleven = new Poster(11, "Interstellar", "UFO", "Fantastic");
-
-    public PosterManagerAddNewFilmTest() {
-    }
-
 
     @BeforeEach
     public void setUp(){
@@ -60,16 +57,30 @@ public class PosterManagerAddNewFilmTest {
     }
     @Test
     void findById() {
-        int idOne = 1;
-        int idTwo = 2;
-        System.out.println(repository.findById(idOne));
-        System.out.println(repository.findById(idTwo));
-
-
-        Poster actual = repository.findById(idOne);
-        Poster expected = repository.findById(idTwo);
+        Poster returned = new Poster(1,"Interstellar", "UFO", "Fantastic");
+        doReturn(returned).when(repository).findById(1);
+        Poster actual = repository.findById(first.getId());
+        Poster expected = first;
         assertEquals(expected,actual);
+        verify(repository).findById(1);
+    }
 
+
+    @Test
+    void testRemoveAll() {
+        Poster[] returned = new Poster[]{};
+        doReturn(returned).when(repository).findAll();
+        doCallRealMethod().when(repository).removeAll();
+        repository.removeAll();
+//        System.out.println(second);
+//        repository.removeAll();
+//        System.out.println(second);
+        manager.getAll();
+//        System.out.println(second);
+
+        Poster[] actual = new Poster[]{first};
+        Poster[] expected = new Poster[]{second};
+        assertArrayEquals(expected,actual);
     }
 }
 
