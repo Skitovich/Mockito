@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+import lombok.val;
 import ru.netology.domain.Poster;
 import ru.netology.repository.PosterRepository;
 

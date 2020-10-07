@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.internal.verification.Calls;
+import org.mockito.internal.verification.Times;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Poster;
 import ru.netology.repository.PosterRepository;
@@ -37,24 +39,23 @@ public class PosterManagerAddNewFilmTest {
       manager.add(first);
       manager.add(second);
       manager.add(third);
-      manager.add(forth);
-      manager.add(five);
-      manager.add(six);
-      manager.add(seven);
-      manager.add(eight);
-      manager.add(nine);
-      manager.add(ten);
-      manager.add(eleven);
-//      manager.getAll();
+
+
     }
 
 
-    @Test
-    public void shouldViewTenFilms() {
-        Poster[] actual = new Poster[]{ten, nine, eight, seven, six, five, forth, third, second, first};
-        Poster[] expected = manager.getAll();
-        assertArrayEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldViewTenFilms() {
+//        Poster [] returned = new Poster[] {third};
+//        doReturn(returned).when(repository).findAll();
+//        repository.findAll();
+//
+//        Poster[] actual = new Poster[]{third};
+//        Poster[] expected = repository.findAll();
+//        assertArrayEquals(expected, actual);
+//        verify(repository, new Times(2)).findAll();
+//    }
+
     @Test
     void findById() {
         Poster returned = new Poster(1,"Interstellar", "UFO", "Fantastic");
@@ -79,6 +80,17 @@ public class PosterManagerAddNewFilmTest {
     }
     @Test
     void save() {
+        Poster [] returned = new Poster[] {third};
+        doReturn(returned).when(repository).findAll();
+        doNothing().when(repository).save(first);
+        repository.save(first);
+
+
+        Poster[] expected = new Poster[]{third};
+        Poster[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+        verify(repository, new Times(2)).save(first);
+
     }
 
     @Test
@@ -90,27 +102,21 @@ public class PosterManagerAddNewFilmTest {
         Poster[] expected = new Poster[]{second,first};
         Poster[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
+
     }
 
     @Test
     void removeById() {
-        int idToRemove = 1;
-        Poster[] returned = new Poster[]{ third, second, first};
+        int idToRemove = 4;
+        Poster[] returned = new Poster[]{second, third, forth};
         doReturn(returned).when(repository).findAll();
+        doNothing().when(repository).removeById(idToRemove);
         repository.findAll();
         repository.removeById(idToRemove);
-        Poster[] expected = new Poster[]{ third, second, first};
+        Poster[] expected = new Poster[]{second, third,forth};
         Poster[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
-
-
-//        Poster returned = new Poster(1,"Interstellar", "UFO", "Fantastic");
-//        doReturn(returned).when(repository).removeById(1);
-//        Poster[] actual = repository.removeById(first.getId());
-//        Poster expected = first;
-//        assertEquals(expected,actual);
-//        verify(repository).findById(1);
-
+        verify(repository).removeById(idToRemove);
 
     }
 

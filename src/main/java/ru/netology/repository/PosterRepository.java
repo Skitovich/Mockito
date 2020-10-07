@@ -18,7 +18,7 @@ public class PosterRepository {
         return films;
     }
 
-    public void removeById(int id) {
+    public void removeById (int id) {
         int length = films.length - 1;
         Poster[] tmp = new Poster[length];
         int index = 0;
