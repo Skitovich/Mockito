@@ -45,7 +45,7 @@ public class PosterManagerAddNewFilmTest {
       manager.add(nine);
       manager.add(ten);
       manager.add(eleven);
-      manager.getAll();
+//      manager.getAll();
     }
 
 
@@ -69,15 +69,13 @@ public class PosterManagerAddNewFilmTest {
     @Test
     void testRemoveAll() {
         Poster[] returned = new Poster[]{first,second};
-        doReturn(returned).when(repository).findAll();
-        doCallRealMethod().when(repository).removeAll();
+        doReturn(returned).when(repository).removeAll();
         repository.removeAll();
-        manager.getAll();
+        Poster[] actual = repository.findAll();
+        Poster[] expected = null;
 
+        assertArrayEquals(expected,actual);
 
-        Poster actual = first;
-        Poster expected = second;
-        assertEquals(expected,actual);
     }
     @Test
     void save() {
@@ -85,10 +83,35 @@ public class PosterManagerAddNewFilmTest {
 
     @Test
     void findAll() {
+
+        Poster[] returned = new Poster[]{ second, first};
+        doReturn(returned).when(repository).findAll();
+
+        Poster[] expected = new Poster[]{second,first};
+        Poster[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     void removeById() {
+        int idToRemove = 1;
+        Poster[] returned = new Poster[]{ third, second, first};
+        doReturn(returned).when(repository).findAll();
+        repository.findAll();
+        repository.removeById(idToRemove);
+        Poster[] expected = new Poster[]{ third, second, first};
+        Poster[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+
+
+//        Poster returned = new Poster(1,"Interstellar", "UFO", "Fantastic");
+//        doReturn(returned).when(repository).removeById(1);
+//        Poster[] actual = repository.removeById(first.getId());
+//        Poster expected = first;
+//        assertEquals(expected,actual);
+//        verify(repository).findById(1);
+
+
     }
 
 
