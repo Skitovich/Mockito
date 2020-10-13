@@ -9,7 +9,7 @@ public class PosterManagerEmptyTest {
     PosterManager manager = new PosterManager();
 
     @Test
-    public void shouldViewNineFilms() {
+    public void shouldViewEmptyFilms() {
         Poster[] actual = new Poster[]{};
         Poster[] expected = manager.getAll();
         assertArrayEquals(expected, actual);
