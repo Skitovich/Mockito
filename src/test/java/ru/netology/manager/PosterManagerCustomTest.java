@@ -30,16 +30,16 @@ public class PosterManagerCustomTest {
 
     @Test
     public void shouldViewNineFilms() {
-        Poster[] actual = new Poster[]{forth, third, second, first};
-        Poster[] expected = manager.getAll();
+        Poster[] expected = new Poster[]{forth, third, second, first};
+        Poster[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldViewFiveFilms() {
         manager.add(five);
-        Poster[] actual = new Poster[]{five, forth, third, second, first};
-        Poster[] expected = manager.getAll();
+        Poster[] expected = new Poster[]{five, forth, third, second, first};
+        Poster[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
@@ -47,8 +47,8 @@ public class PosterManagerCustomTest {
     public void shouldViewSixFilms() {
         manager.add(five);
         manager.add(six);
-        Poster[] actual = new Poster[]{five, forth, third, second, first};
-        Poster[] expected = manager.getAll();
+        Poster[] expected = new Poster[]{six, five, forth, third, second};
+        Poster[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 }

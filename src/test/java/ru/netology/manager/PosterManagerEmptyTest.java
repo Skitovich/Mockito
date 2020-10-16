@@ -10,8 +10,8 @@ public class PosterManagerEmptyTest {
 
     @Test
     public void shouldViewEmptyFilms() {
-        Poster[] actual = new Poster[]{};
-        Poster[] expected = manager.getAll();
+        Poster[] expected = new Poster[]{};
+        Poster[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 }

@@ -1,24 +1,20 @@
 package ru.netology.manager;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import lombok.NoArgsConstructor;
 import ru.netology.domain.Poster;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
-public class PosterManager {
-    private Poster[] films = new Poster[0];
-    int afishaLength = 10;
 
-    public PosterManager(int i) {
-    setAfishaLength(i);
+public class PosterManager {
+    private int afishaLength = 10;
+    private Poster[] films = new Poster[0];
+
+    public PosterManager(int afishaLength) {
+        this.afishaLength = afishaLength;
     }
 
-
-
-    public void add (Poster film) {
+    public void add(Poster film) {
         int length = films.length + 1;
         Poster[] tmp = new Poster[length];
         System.arraycopy(films, 0, tmp, 0, films.length);
@@ -29,11 +25,11 @@ public class PosterManager {
 
     public Poster[] getAll() {
 
-        int getAllLength = 0;
+        int getAllLength;
         getAllLength = Math.min(afishaLength, films.length);
         Poster[] result = new Poster[getAllLength];
-        for (int i = 0; i < result.length; i++) {
-            int index = result.length - 1 - i;
+        for (int i = 0; i < getAllLength; i++) {
+            int index = films.length - 1 - i;
             result[i] = films[index];
         }
         return result;

@@ -39,27 +39,27 @@ public class PosterManagerDefaultTest {
 
     @Test
     public void shouldViewNineFilms() {
-        Poster[] actual = new Poster[]{ nine, eight, seven, six, five, forth, third, second, first};
-        Poster[] expected = manager.getAll();
+        Poster[] expected = new Poster[]{nine, eight, seven, six, five, forth, third, second, first};
+        Poster[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
-  @Test
-  public void shouldViewTenFilms() {
-      manager.add(ten);
-    Poster[] actual = new Poster[]{ten, nine, eight, seven, six, five, forth, third, second, first};
-    Poster[] expected = manager.getAll();
-    assertArrayEquals(expected, actual);
-  }
+    @Test
+    public void shouldViewTenFilms() {
+        manager.add(ten);
+        Poster[] expected = new Poster[]{ten, nine, eight, seven, six, five, forth, third, second, first};
+        Poster[] actual = manager.getAll();
+        assertArrayEquals(expected, actual);
+    }
 
-  @Test
-  public void shouldViewElevenFilms() {
-    manager.add(ten);
-    manager.add(eleven);
-    Poster[] actual = new Poster[]{ten, nine, eight, seven, six, five, forth, third, second, first};
-    Poster[] expected = manager.getAll();
-    assertArrayEquals(expected, actual);
-  }
+    @Test
+    public void shouldViewElevenFilms() {
+        manager.add(ten);
+        manager.add(eleven);
+        Poster[] expected = new Poster[]{eleven, ten, nine, eight, seven, six, five, forth, third, second};
+        Poster[] actual = manager.getAll();
+        assertArrayEquals(expected, actual);
+    }
 
 
 }
