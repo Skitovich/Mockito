@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Poster {
-  private int id;
-  private String name;
-  private String poster;
-  private String genre;
+    private int id;
+    private String name;
+    private String poster;
+    private String genre;
 
 
 }

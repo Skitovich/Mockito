@@ -5,7 +5,8 @@ import ru.netology.domain.Poster;
 public class PosterRepository {
     private Poster[] films = new Poster[0];
 
-    public void save (Poster film) {
+
+    public void save(Poster film) {
         int length = films.length + 1;
         Poster[] tmp = new Poster[length];
         System.arraycopy(films, 0, tmp, 0, films.length);
@@ -18,7 +19,7 @@ public class PosterRepository {
         return films;
     }
 
-    public void removeById (int id) {
+    public void removeById(int id) {
         int length = films.length - 1;
         Poster[] tmp = new Poster[length];
         int index = 0;
@@ -39,14 +40,10 @@ public class PosterRepository {
         }
         return null;
     }
-    public Poster[] removeAll(){
+
+
+    public void removeAll() {
         Poster[] tmp = new Poster[0];
         films = tmp;
-        System.gc();
-        return tmp;
     }
-
-  
-
-
 }
